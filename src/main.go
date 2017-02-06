@@ -1,19 +1,23 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
-	"io/ioutil"
+	"github.com/astaxie/beego/httplib"
 )
 
 func main() {
-	resp, err := http.Get("http://op.juhe.cn/robot/index?info=你好&key=c9121bfc13b955f01183f082583d1fd6")
+
+	str, err := httplib.Get("http://op.juhe.cn/robot/index?info=你好&key=c9121bfc13b955f01183f082583d1fd6").String()
 	if err != nil {
-		fmt.Println("error")
+		fmt.Println(err)
 	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-
-	fmt.Println(string(body))
+	fmt.Println(str)
+	//resp, err := http.Get("http://op.juhe.cn/robot/index?info=你好&key=c9121bfc13b955f01183f082583d1fd6")
+	//if err != nil {
+	//	fmt.Println("error")
+	//}
+	//defer resp.Body.Close()
+	//body, err := ioutil.ReadAll(resp.Body)
+	//
+	//fmt.Println(string(body))
 }
-
