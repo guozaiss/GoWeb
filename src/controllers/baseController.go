@@ -4,10 +4,18 @@ import (
 	"net/http"
 	"fmt"
 )
+
 type baseController struct {
 
 }
-func Deal(w http.ResponseWriter, r *http.Request) {
+
+func DealBegin(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm() //解析参数，默认是不会解析的
-	fmt.Println(r.TLS, r.Host, r.URL.Path, r.Method, "--->", r.Form)
+	fmt.Println("begin")
+	fmt.Println(r.TLS, r.Host, r.URL.Path, r.Method, "--->", r.Form, "\n")
+}
+
+func DealEnd(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("end")
+	fmt.Println( "\n")
 }

@@ -3,8 +3,7 @@ package controllers
 import (
 	"net/http"
 	"fmt"
-	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	"../dbUtils"
 )
 
 type queryPersonController struct {
@@ -12,18 +11,8 @@ type queryPersonController struct {
 }
 
 func QueryPerson(w http.ResponseWriter, r *http.Request) {
-	Deal(w, r)
-	r.ParseForm()
-	i := r.Form.Get("userId")
-	fmt.Println(i)
-	db, err := sql.Open("mysql", "guo:123456@/meizhi")
-	if err != nil {
-		fmt.Println(err)
-	}
-	rows, err := db.Query("select * from showalltb_meizhi")
-	if err != nil {
-		fmt.Println(err)
-	}
+	DealBegin(w, r)
+	rows := dbUtils.Query("select * from showalltb_meizhi")
 	for rows.Next() {
 		var id, fileName string
 		rows.Columns()
@@ -33,5 +22,4 @@ func QueryPerson(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Println("id", id, "fileName", fileName)
 	}
-
 }

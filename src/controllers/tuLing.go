@@ -9,7 +9,7 @@ import (
 )
 
 func TuLing(w http.ResponseWriter, r *http.Request) {
-	Deal(w, r)
+	DealBegin(w, r)
 	bm, _ := cache.NewCache("memory", `{"interval":60}`)
 	cache.GetString(bm.Get(r.URL.Path))
 	if bm.Get(r.URL.Path) != nil {

@@ -6,6 +6,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	Deal(w, r)
+	DealBegin(w, r)
 	fmt.Fprintf(w, "Index")
+	DealEnd(w, r)
 }
