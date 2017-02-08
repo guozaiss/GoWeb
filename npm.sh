@@ -18,4 +18,10 @@ cd $GOPATH
 cd src/github.com/go-sql-driver/mysql
 git checkout v1.3
 
+echo "github.com/go-xorm/xorm"
+go get github.com/go-xorm/xorm
+cd $GOPATH
+cd src/github.com/go-xorm/xorm
+git checkout v0.5.8
+
 echo "下载完毕"

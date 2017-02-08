@@ -16,3 +16,4 @@ func Query(sql string) (rows *sql.Rows) {
 	}
 	return rows
 }
+
