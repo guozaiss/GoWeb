@@ -19,4 +19,5 @@ func TuLing(w http.ResponseWriter, r *http.Request) {
 		bm.Put(r.URL.Path, str, 10 * time.Second)
 		fmt.Fprintf(w, cache.GetString(bm.Get(r.URL.Path)))
 	}
+	DealEnd(w, r)
 }
